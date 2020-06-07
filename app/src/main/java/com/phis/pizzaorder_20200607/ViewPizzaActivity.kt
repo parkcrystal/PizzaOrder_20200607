@@ -5,24 +5,26 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.util.Log
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
 import com.phis.pizzaorder_20200607.datas.PizzaStore
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.pizza_store_list_item.*
-import kotlinx.android.synthetic.main.pizza_store_list_item.logoImg
+
 
 class ViewPizzaActivity: BaseActivity() {
 
     lateinit var mPizzaStore: PizzaStore
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setupEvents()
         setValues()
+
+        Log.d("테스트", "상세화면")
     }
 
 
@@ -77,7 +79,7 @@ class ViewPizzaActivity: BaseActivity() {
 
        // Glide.with(mContext).load(clickPizzalogoUrl).into(logoImg)
         Glide.with(mContext).load(mPizzaStore.logoUrl).into(logoImg)
-        storeNameTxt.text = mPizzaStore.name
+        brandNameTxt.text = mPizzaStore.name
         phoneNumTxt.text = mPizzaStore.phoneNum
 
     }
