@@ -3,6 +3,7 @@ package com.phis.pizzaorder_20200607
 import android.os.Bundle
 import com.phis.pizzaorder_20200607.adapters.PizzaAdapter
 import com.phis.pizzaorder_20200607.datas.PizzaStore
+import kotlinx.android.synthetic.main.pizza_list_item.*
 
 class MainActivity : BaseActivity() {
 
@@ -28,6 +29,14 @@ class MainActivity : BaseActivity() {
     override fun setValues() {
 //       가게를 직접 추가하는 코드를 따로 모아두고 setValues는 실행만 시킨다.
         addStores()
+
+//        리스트뷰에 목록을 뿌려주는 역학을 담당할 어댑터를 생성.
+        pizzaAdapter = PizzaAdapter(mContext, R.layout.pizza_store_list_item, pizzaStoreList)
+        
+//        만들어낸 어댑터를 실제 리스트뷰와 연결
+        pizzaStoreListView.adapter = pizzaAdapter
+
+
     }
 
 //    가게를 추가하는 코드가 모인 함수
