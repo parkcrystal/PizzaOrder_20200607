@@ -32,13 +32,14 @@ class MainActivity : BaseActivity() {
 
 //            눌린 가게가 어디인지
             val clickPizza = pizzaStoreList.get(position)
-            val clickPizzalogoUrl= pizzaStoreList.get(position).logoUrl
+            //val clickPizzalogoUrl= pizzaStoreList.get(position).logoUrl
             val myIntent = Intent(mContext, ViewPizzaActivity::class.java)
             myIntent.putExtra("store", clickPizza)
+           // myIntent.putExtra("logoImg", clickPizzalogoUrl)
             startActivity(myIntent)
 
 
-            Glide.with(mContext).load(clickPizzalogoUrl).into(logoImg)
+
 
 
 
