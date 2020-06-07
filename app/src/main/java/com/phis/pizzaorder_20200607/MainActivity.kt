@@ -1,6 +1,8 @@
 package com.phis.pizzaorder_20200607
 
+import android.content.Intent
 import android.os.Bundle
+import com.bumptech.glide.Glide
 import com.phis.pizzaorder_20200607.adapters.PizzaAdapter
 import com.phis.pizzaorder_20200607.datas.PizzaStore
 import kotlinx.android.synthetic.main.pizza_list_item.*
@@ -16,13 +18,32 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.pizza_list_item)
         setupEvents()
         setValues()
     }
 
 
     override fun setupEvents() {
+
+        pizzaStoreListView.setOnItemClickListener { parent, view, position, id ->
+
+
+//            눌린 가게가 어디인지
+            val clickPizza = pizzaStoreList.get(position)
+            val myIntent = Intent(mContext, ViewPizzaActivity::class.java)
+            myIntent.putExtra("pizzaUrl", clickPizza.logoUrl)
+            startActivity(myIntent)
+
+
+            Glide.with(mContext).load(pizzaStoreList.toString()).into(profile_image)
+
+
+
+
+        }
+
+
 
     }
 
@@ -35,6 +56,8 @@ class MainActivity : BaseActivity() {
         
 //        만들어낸 어댑터를 실제 리스트뷰와 연결
         pizzaStoreListView.adapter = pizzaAdapter
+
+
 
 
     }

@@ -21,6 +21,8 @@ class PizzaAdapter(context: Context, resId: Int, storeList: List<PizzaStore>): A
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var tempRow = convertView
         tempRow?.let {
+
+        }.let {
             tempRow = inf.inflate(R.layout.pizza_store_list_item, null)
         }
         val row = tempRow!!
