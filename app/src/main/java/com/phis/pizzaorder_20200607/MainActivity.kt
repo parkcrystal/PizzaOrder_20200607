@@ -6,6 +6,7 @@ import com.bumptech.glide.Glide
 import com.phis.pizzaorder_20200607.adapters.PizzaAdapter
 import com.phis.pizzaorder_20200607.datas.PizzaStore
 import kotlinx.android.synthetic.main.pizza_list_item.*
+import kotlinx.android.synthetic.main.pizza_store_list_item.*
 
 class MainActivity : BaseActivity() {
 
@@ -31,12 +32,13 @@ class MainActivity : BaseActivity() {
 
 //            눌린 가게가 어디인지
             val clickPizza = pizzaStoreList.get(position)
+            val clickPizzalogoUrl= pizzaStoreList.get(position).logoUrl
             val myIntent = Intent(mContext, ViewPizzaActivity::class.java)
-            myIntent.putExtra("pizzaUrl", clickPizza.logoUrl)
+            myIntent.putExtra("store", clickPizza)
             startActivity(myIntent)
 
 
-            Glide.with(mContext).load(pizzaStoreList.toString()).into(profile_image)
+            Glide.with(mContext).load(clickPizzalogoUrl).into(logoImg)
 
 
 
